@@ -1,7 +1,6 @@
 use std::io;
 use std::io::Write;
 use std::fs::File;
-use std::path::Path;
 
 fn main() {
     let max = greet();
@@ -25,13 +24,13 @@ fn main() {
         }
 
         print_string.push_str(&i.to_string());
-        print_string.push_str("\n");
+        print_string.push('\n');
     }
     // Close print_string
     print_string.push_str("\"\"\")");
 
     // Write to file
-    let mut file = match File::create(Path::new("solution.py")) {
+    let mut file = match File::create("solution.py") {
         Ok(file) => file,
         Err(_) => panic!("Could not create file!")
     };
